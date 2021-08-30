@@ -5,29 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/style.css" />
+    <script
+      src="https://kit.fontawesome.com/488f9c4f6d.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Momentum</title>
   </head>
   <body>
-    <h2 id="clock">00:00:00</h2>
-    <form id="login-form" class="hidden">
-      <input
-        required
-        maxlength="15"
-        type="text"
-        placeholder="What is your name?"
-      />
-      <button>Log In</button>
-    </form>
-    <h1 id="greeting" class="hidden"></h1>
-    <form id="todo-form">
-      <input type="text" placeholder="Write a To Do and Press Enter" required />
-    </form>
-    <ul id="todo-list"></ul>
-    <div id="quote">
+    <div id="weather">
       <span></span>
       <span></span>
     </div>
-    <div id="weather">
+    <section class="center">
+      <h2 id="clock">00:00:00</h2>
+      <form id="login-form" class="hidden">
+        <input
+          required
+          maxlength="15"
+          type="text"
+          placeholder="What is your name?"
+        />
+        <!-- <button>Log In</button> -->
+      </form>
+      <h1 id="greeting" class="hidden"></h1>
+      <form id="todo-form">
+        <input type="text" placeholder="Write a To-Do here." required />
+      </form>
+      <ul id="todo-list"></ul>
+    </section>
+    <div id="quote">
       <span></span>
       <span></span>
     </div>
