@@ -1,26 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap");
+
+.hidden {
+  display: none;
+}
+
 @keyframes fadeIn {
   from {
-    visibility: hidden;
+    opacity: 0;
   }
   to {
-    visibility: visible;
+    opacity: 1;
   }
 }
 
 body {
+  font-family: "Roboto", sans-serif;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   color: white;
-  font-weight: 600;
+  font-weight: 500;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-  animation: fadeIn 0.5s linear;
+  animation: fadeIn 1.5s ease-in-out;
+  padding: 20px;
+  padding-top: 10px;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-.hidden {
-  display: none;
+.top-row,
+.bottom-row {
+  width: 100%;
+  display: flex;
+}
+
+.top-row {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bottom-row {
+  justify-content: center;
+  text-align: center;
+}
+
+#weather,
+#quote {
+  display: flex;
+  flex-direction: column;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+#weather {
+  align-items: flex-end;
+}
+
+#weather span:first-child,
+#quote span:first-child {
+  color: white;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+#weather span:first-child {
+  font-size: 20px;
+  font-weight: 700;
 }
 
 .center {
@@ -48,7 +94,6 @@ input {
   border-bottom: 3px solid white;
   background: none;
   padding: 10px 20px;
-  margin-bottom: 20px;
   color: white;
   font-size: 25px;
   text-align: center;
@@ -62,9 +107,30 @@ input:focus {
   outline: none;
 }
 
-button {
+#login-form input {
+  margin-bottom: 20px;
+}
+
+#search-form input {
+  width: 180px;
   border: none;
+  text-align: left;
+  padding: 8px 10px;
   font-size: 20px;
+}
+
+#search-form span {
+  width: 0px;
+  height: 2px;
+  background-color: white;
+  display: block;
+  visibility: hidden;
+}
+
+#search-form:hover span {
+  width: 220px;
+  visibility: visible;
+  transition: width 0.3s ease-in-out;
 }
 
 /* @counter-style check {
@@ -84,32 +150,9 @@ button {
 }
 
 #todo-list button {
+  border: none;
+  font-size: 20px;
   margin-right: 5px;
   background: none;
   cursor: pointer;
-}
-
-#weather,
-#quote {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  color: rgba(255, 255, 255, 0.8);
-}
-
-#weather {
-  align-items: flex-end;
-  top: 15px;
-  right: 15px;
-}
-
-#quote {
-  align-items: center;
-  bottom: 10px;
-}
-
-#weather span:first-child,
-#quote span:first-child {
-  font-size: 18px;
-  margin-bottom: 5px;
 }
