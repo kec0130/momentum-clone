@@ -1,3 +1,115 @@
+@keyframes fadeIn {
+  from {
+    visibility: hidden;
+  }
+  to {
+    visibility: visible;
+  }
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  animation: fadeIn 0.5s linear;
+}
+
 .hidden {
   display: none;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#clock {
+  font-size: 150px;
+  font-weight: 700;
+  text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.5);
+  margin: 0;
+}
+
+#greeting {
+  font-size: 50px;
+  margin: 0px 0px 10px 0px;
+}
+
+input {
+  width: 250px;
+  border: none;
+  border-bottom: 3px solid white;
+  background: none;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  color: white;
+  font-size: 25px;
+  text-align: center;
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+input:focus {
+  outline: none;
+}
+
+button {
+  border: none;
+  font-size: 20px;
+}
+
+/* @counter-style check {
+  system: cyclic;
+  symbols: "\2611";
+  suffix: " ";
+} */
+
+#todo-list {
+  list-style: none;
+  font-size: 20px;
+  padding: 0;
+}
+
+#todo-list li {
+  margin-bottom: 10px;
+}
+
+#todo-list button {
+  margin-right: 5px;
+  background: none;
+  cursor: pointer;
+}
+
+#weather,
+#quote {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+#weather {
+  align-items: flex-end;
+  top: 15px;
+  right: 15px;
+}
+
+#quote {
+  align-items: center;
+  bottom: 10px;
+}
+
+#weather span:first-child,
+#quote span:first-child {
+  font-size: 18px;
+  margin-bottom: 5px;
 }
