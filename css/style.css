@@ -127,7 +127,8 @@ input:focus {
   visibility: hidden;
 }
 
-#search-form:hover span {
+#search-form:hover span,
+#search-form:focus-within span {
   width: 220px;
   visibility: visible;
   transition: width 0.3s ease-in-out;
@@ -146,13 +147,17 @@ input:focus {
 }
 
 #todo-list li {
+  display: flex;
   margin-bottom: 10px;
 }
 
-#todo-list button {
-  border: none;
-  font-size: 20px;
-  margin-right: 5px;
-  background: none;
+#todo-list i {
+  margin-right: 15px;
   cursor: pointer;
+  opacity: 0.6;
+}
+
+#todo-list i:hover {
+  color: white;
+  opacity: 1;
 }

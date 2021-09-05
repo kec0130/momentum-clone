@@ -10,23 +10,61 @@ function saveToDos() {
 }
 
 function deleteToDo(event) {
-  const li = event.target.parentElement;
+  const li = event.target.parentElement.parentElement;
   li.remove();
   toDos = toDos.filter((toDo) => toDo.id !== parseInt(li.id));
   saveToDos();
 }
 
+function doneStyle(checkIcon) {
+  const span = checkIcon.parentElement.nextSibling;
+  checkIcon.style.color = "limegreen";
+  checkIcon.style.opacity = "1";
+  span.style.textDecoration = "line-through";
+}
+
+function checkToDo(event) {
+  const checkIcon = event.target;
+  const span = checkIcon.parentElement.nextSibling;
+  const li = checkIcon.parentElement.parentElement;
+  const checked = toDos.find(({ id }) => id === parseInt(li.id));
+  if (checked.status === "to-do") {
+    doneStyle(checkIcon);
+    checked.status = "done";
+  } else {
+    checkIcon.style.color = "white";
+    checkIcon.style.opacity = "0.6";
+    span.style.textDecoration = null;
+    checked.status = "to-do";
+  }
+  saveToDos();
+}
+
 function paintToDo(newTodo) {
   const li = document.createElement("li");
+  const iconDiv = document.createElement("div");
+  const trashIcon = document.createElement("i");
+  const checkIcon = document.createElement("i");
   const span = document.createElement("span");
-  const button = document.createElement("button");
+
   li.id = newTodo.id;
   span.innerText = newTodo.text;
-  button.innerText = "🐤";
-  button.addEventListener("click", deleteToDo);
-  li.appendChild(button);
+
+  trashIcon.className = "fas fa-trash";
+  trashIcon.addEventListener("click", deleteToDo);
+
+  checkIcon.className = "fas fa-check-square";
+  checkIcon.addEventListener("click", checkToDo);
+
+  iconDiv.appendChild(trashIcon);
+  iconDiv.appendChild(checkIcon);
+  li.appendChild(iconDiv);
   li.appendChild(span);
   toDoList.appendChild(li);
+
+  if (newTodo.status === "done") {
+    doneStyle(checkIcon);
+  }
 }
 
 function handleToDoSubmit(event) {
@@ -36,6 +74,7 @@ function handleToDoSubmit(event) {
   const newTodoObj = {
     text: newTodo,
     id: Date.now(),
+    status: "to-do",
   };
   toDos.push(newTodoObj);
   paintToDo(newTodoObj);
@@ -47,7 +86,6 @@ toDoForm.addEventListener("submit", handleToDoSubmit);
 const savedToDos = localStorage.getItem(TODOS_KEY);
 
 if (savedToDos !== null) {
-  const parsedToDos = JSON.parse(savedToDos);
-  toDos = parsedToDos;
-  parsedToDos.forEach(paintToDo);
+  toDos = JSON.parse(savedToDos);
+  toDos.forEach(paintToDo);
 }
